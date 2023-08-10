@@ -11,12 +11,13 @@ import com.github.framework.util.json.FastJsonUtil;
 public class SortAlgorithm {
 
     public static void main(String[] args) {
-        int[] arr = {3,1,5,7,2,4,9,6,10,8};
+//        int[] arr = {3,1,5,7,2,4,9,6,10,8};
+        int[] arr = {7, 3, 6, 4, 2, 9, 1};
         System.out.println(FastJsonUtil.toJsonString(arr));
 //        insertSort(arr);
 //        System.out.println("插入排序："+FastJsonUtil.toJsonString(arr));
-//        shellInsertSort(arr);
-//        System.out.println("希尔排序："+FastJsonUtil.toJsonString(arr));
+        shellInsertSort(arr);
+        System.out.println("希尔排序："+FastJsonUtil.toJsonString(arr));
 //        bubbleSort(arr);
 //        System.out.println("冒泡排序："+FastJsonUtil.toJsonString(arr));
         quitSort(arr, 0, arr.length - 1);
@@ -90,7 +91,7 @@ public class SortAlgorithm {
                 }
                 array[j+dk] = curr;
             }
-
+            System.out.println(FastJsonUtil.toJsonString(array));
             dk = dk / 2;
         }
     }

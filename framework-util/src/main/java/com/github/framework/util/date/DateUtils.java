@@ -78,7 +78,7 @@ public class DateUtils {
 
 	/**
 	 * 时间拼接 将日期和实现拼接 ymd 如2012-05-15 hm 如0812
-	 * 
+	 *
 	 * @param ymd
 	 * @param hm
 	 * @return
@@ -106,7 +106,7 @@ public class DateUtils {
 
 	/**
 	 * 根据传入的日期返回年月日的6位字符串，例：20101203
-	 * 
+	 *
 	 * @param date
 	 * @return
 	 * @author 龙海仁
@@ -119,7 +119,7 @@ public class DateUtils {
 
 	/**
 	 * 根据传入的日期返回中文年月日字符串，例：2010年12月03日
-	 * 
+	 *
 	 * @param date
 	 * @return
 	 * @author 龙海仁
@@ -132,9 +132,9 @@ public class DateUtils {
 
 	/**
 	 * 将传入的时间格式的字符串转成时间对象
-	 * 
+	 *
 	 * 例：传入2012-12-03 23:21:24
-	 * 
+	 *
 	 * @param dateStr
 	 * @return
 	 * @author 龙海仁
@@ -170,7 +170,7 @@ public class DateUtils {
 
 	/**
 	 * 返回该天从00:00:00开始的日期
-	 * 
+	 *
 	 * @param date
 	 * @return
 	 */
@@ -182,7 +182,7 @@ public class DateUtils {
 
 	/**
 	 * 返回n天后从00:00:00开始的日期
-	 * 
+	 *
 	 * @param date
 	 * @return
 	 */
@@ -195,7 +195,7 @@ public class DateUtils {
 
 	/**
 	 * 返回该天到23:59:59结束的日期
-	 * 
+	 *
 	 * @param date
 	 * @return
 	 */
@@ -207,7 +207,7 @@ public class DateUtils {
 
 	/**
 	 * 返回n天到23:59:59结束的日期
-	 * 
+	 *
 	 * @param date
 	 * @return
 	 */
@@ -221,7 +221,7 @@ public class DateUtils {
 
 	/**
 	 * 返回该日期的最后一刻，精确到纳秒
-	 * 
+	 *
 	 * @param endTime
 	 * @return
 	 */
@@ -233,7 +233,7 @@ public class DateUtils {
 
 	/**
 	 * 返回该日期加1秒
-	 * 
+	 *
 	 * @param endTime
 	 * @return
 	 */
@@ -248,7 +248,7 @@ public class DateUtils {
 
 	/**
 	 * 返回该日期加 millisecond 毫秒，正数为加，负数为减
-	 * 
+	 *
 	 * @param date
 	 * @param millisecond
 	 * @return
@@ -264,7 +264,7 @@ public class DateUtils {
 
 	/**
 	 * 相对当前日期，增加或减少天数
-	 * 
+	 *
 	 * @param date
 	 * @param day
 	 * @return
@@ -277,7 +277,7 @@ public class DateUtils {
 
 	/**
 	 * 相对当前日期，增加或减少天数
-	 * 
+	 *
 	 * @param date
 	 * @param day
 	 * @return
@@ -288,7 +288,7 @@ public class DateUtils {
 
 	/**
 	 * 返回两个时间的相差天数
-	 * 
+	 *
 	 * @param startTime
 	 *            对比的开始时间
 	 * @param endTime
@@ -322,7 +322,7 @@ public class DateUtils {
 
 	/**
 	 * 返回两个时间的相差天数
-	 * 
+	 *
 	 * @param startTime
 	 *            对比的开始时间
 	 * @param endTime
@@ -343,7 +343,7 @@ public class DateUtils {
 
 	/**
 	 * 返回两个时间的相差分钟数
-	 * 
+	 *
 	 * @param startTime
 	 *            对比的开始时间
 	 * @param endTime
@@ -364,7 +364,7 @@ public class DateUtils {
 
 	/**
 	 * 返回两个时间的相差秒数
-	 * 
+	 *
 	 * @param startTime
 	 *            对比的开始时间
 	 * @param endTime
@@ -393,5 +393,22 @@ public class DateUtils {
 		}
 
 		return m.concat(d);
+	}
+
+	public static Date getDate(Date date, int month, int day, int type, int offset){
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+
+		calendar.add(type, offset);
+		calendar.set(Calendar.MONTH, month - 1);
+		calendar.set(Calendar.DATE, day);
+
+		return calendar.getTime();
+	}
+
+	public static void main(String[] args) {
+		Date date = getDate(new Date(), 1, 31, Calendar.YEAR, -1);
+		System.out.println(date);
 	}
 }
